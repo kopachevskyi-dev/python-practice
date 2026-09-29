@@ -24,11 +24,16 @@ ask_for_copy = input('Do you want to make a copy of the message? (y/n): ')
 
 if ask_for_copy == 'y':
     copy_number = int(input('Enter the number of copies you want to make: '))
+    message = year_of_100(user_name, user_age)
     counter = 0
 
     while counter < copy_number:
-        print(year_of_100(user_name, user_age))
+        if counter != copy_number - 1:
+            print(message + '\n')
+        else:
+            print(message)
         counter += 1
+        
 else:
     print('See ya later!')
 
