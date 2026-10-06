@@ -18,9 +18,16 @@ movie_collection = []
 # Adds a new movie to the collection
 def add_new_movie(movie_title, movie_director, movie_year):
     movie = {
-        "title": movie_title,
-        "director": movie_director,
-        "year": movie_year
+        'title': movie_title,
+        'director': movie_director,
+        'year': movie_year
     }
 
     movie_collection.append(movie)
+
+# Lists current collection
+def list_movie_collection(movie_collection):
+    print('Your current movie collection: ')
+
+    for movie in movie_collection:
+        print(movie)
