@@ -9,7 +9,7 @@ How to build it:
 - Decide what information to save for each movie
 - Show a menu and let the user choose an option
 - Write each feature as its own function
-- Stop the program when the user types 'q'
+- Stop the program when the user types "q"
 """
 
 # Movie collection
@@ -18,16 +18,39 @@ movie_collection = []
 # Adds a new movie to the collection
 def add_new_movie(movie_title, movie_director, movie_year):
     movie = {
-        'title': movie_title,
-        'director': movie_director,
-        'year': movie_year
+        "title": movie_title,
+        "director": movie_director,
+        "year": movie_year
     }
 
     movie_collection.append(movie)
 
 # Lists current collection
 def list_movie_collection(movie_collection):
-    print('Your current movie collection: ')
+    if len(movie_collection) != 0:
+        print("Your current movie collection: ")
 
-    for movie in movie_collection:
-        print(movie)
+        for movie in movie_collection:
+            print(movie)
+    else:
+        print("Your current collection is empty :(")
+
+
+print("WELCOME TO THE MOVIE COLLECTION APP \n1. Enter 'add' if you want to add a new movie to the collection \n2. Enter 'list' if you want to list you current movie collection \n3. Enter 'search' if you want to search for a specific movie from your collection \n4. Enter 'q' if you want to quit the app")
+
+while (True):
+    user_input = input("Your choice: ")
+
+    if user_input == "add":
+        movie_title = input("Please provide a movie title: ")
+        movie_director = input("Please provide a name of the movie director: ")
+        movie_year = input("Please provide a year when the movie was released: ")
+
+        add_new_movie(movie_title, movie_director, movie_title)
+    elif user_input == "list":
+        list_movie_collection(movie_collection)
+    elif user_input == "q":
+        print("See ya later, bye!")
+        break
+    else:
+        print("Incorrect input, please try again")
