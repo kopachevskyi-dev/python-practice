@@ -37,12 +37,13 @@ def list_movie_collection(movie_collection):
 
 # Search a movie from the collection based on it's title
 def search_movie(title, movie_collection):
-    for index, movie in enumerate(movie_collection):
+    for movie in movie_collection:
         if title.lower() == movie["title"].lower():
             print("The movie you are looking for is: ")
             print(movie)
-        else:
-            print("Can't find a movie with such title in your collection :(")
+            break
+    else:
+        print("Can't find a movie with such title in your collection :(")
 
 print(
 """
@@ -64,7 +65,7 @@ while (True):
         movie_director = input("Please provide a name of the movie director: ")
         movie_year = input("Please provide a year when the movie was released: ")
         # Logic
-        add_new_movie(movie_title, movie_director, movie_title)
+        add_new_movie(movie_title, movie_director, movie_year)
     elif user_input == "list":
         # Logic
         list_movie_collection(movie_collection)
