@@ -35,20 +35,44 @@ def list_movie_collection(movie_collection):
     else:
         print("Your current collection is empty :(")
 
+# Search a movie from the collection based on it's title
+def search_movie(title, movie_collection):
+    for index, movie in enumerate(movie_collection):
+        if title.lower() == movie["title"].lower():
+            print("The movie you are looking for is: ")
+            print(movie)
+        else:
+            print("Can't find a movie with such title in your collection :(")
 
-print("WELCOME TO THE MOVIE COLLECTION APP \n1. Enter 'add' if you want to add a new movie to the collection \n2. Enter 'list' if you want to list you current movie collection \n3. Enter 'search' if you want to search for a specific movie from your collection \n4. Enter 'q' if you want to quit the app")
+print(
+"""
+WELCOME TO THE MOVIE COLLECTION APP
+
+1. Enter 'add' if you want to add a new movie to the collection
+2. Enter 'list' if you want to list you current movie collection
+3. Enter 'search' if you want to search for a specific movie from your collection
+4. Enter 'q' if you want to quit the app
+
+""")
 
 while (True):
     user_input = input("Your choice: ")
 
     if user_input == "add":
+        # Input
         movie_title = input("Please provide a movie title: ")
         movie_director = input("Please provide a name of the movie director: ")
         movie_year = input("Please provide a year when the movie was released: ")
-
+        # Logic
         add_new_movie(movie_title, movie_director, movie_title)
     elif user_input == "list":
+        # Logic
         list_movie_collection(movie_collection)
+    elif user_input == "search":
+        # Input
+        title = input("Please provide a movie title: ")
+        # Logic
+        search_movie(title, movie_collection)
     elif user_input == "q":
         print("See ya later, bye!")
         break
