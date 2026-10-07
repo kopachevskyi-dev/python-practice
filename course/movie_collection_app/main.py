@@ -38,7 +38,7 @@ def list_movie_collection(movie_collection):
 # Search a movie from the collection based on it's title
 def search_movie(title, movie_collection):
     for movie in movie_collection:
-        if title.lower() == movie["title"].lower():
+        if title.strip().lower() == movie["title"].lower():
             print("The movie you are looking for is: ")
             print(movie)
             break
@@ -57,23 +57,28 @@ WELCOME TO THE MOVIE COLLECTION APP
 """)
 
 while (True):
-    user_input = input("Your choice: ")
+    user_input = input("Your choice: ").strip().lower()
 
     if user_input == "add":
-        # Input
-        movie_title = input("Please provide a movie title: ")
-        movie_director = input("Please provide a name of the movie director: ")
-        movie_year = input("Please provide a year when the movie was released: ")
-        # Logic
-        add_new_movie(movie_title, movie_director, movie_year)
+        movie_title = input("Please provide a movie title: ").strip()
+        movie_director = input("Please provide a name of the movie director: ").strip()
+        movie_year = input("Please provide a year when the movie was released: ").strip()
+
+        if movie_title == "" or movie_title == " " or movie_director == "" or movie_director == " " or movie_year.isdigit() != True:
+            print("You've provided incorrect movie data.")
+        else:
+            add_new_movie(movie_title, movie_director, int(movie_year))
+
     elif user_input == "list":
-        # Logic
         list_movie_collection(movie_collection)
     elif user_input == "search":
-        # Input
         title = input("Please provide a movie title: ")
-        # Logic
-        search_movie(title, movie_collection)
+
+        if title.strip().lower() == "" or title.strip().lower() == " ":
+            print("You've provided incorrect movie title.")
+        else:
+            search_movie(title, movie_collection)
+
     elif user_input == "q":
         print("See ya later, bye!")
         break
