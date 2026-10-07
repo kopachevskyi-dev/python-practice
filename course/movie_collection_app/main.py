@@ -64,11 +64,10 @@ while (True):
         movie_director = input("Please provide a name of the movie director: ").strip()
         movie_year = input("Please provide a year when the movie was released: ").strip()
 
-        if movie_title == "" or movie_title == " " or movie_director == "" or movie_director == " " or movie_year.isdigit() != True:
+        if not movie_title or not movie_director or not movie_year.isdigit():
             print("You've provided incorrect movie data.")
         else:
             add_new_movie(movie_title, movie_director, int(movie_year))
-
     elif user_input == "list":
         list_movie_collection(movie_collection)
     elif user_input == "search":
@@ -78,7 +77,6 @@ while (True):
             print("You've provided incorrect movie title.")
         else:
             search_movie(title, movie_collection)
-
     elif user_input == "q":
         print("See ya later, bye!")
         break
