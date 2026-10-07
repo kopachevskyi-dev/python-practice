@@ -73,7 +73,7 @@ while (True):
     elif user_input == "search":
         title = input("Please provide a movie title: ")
 
-        if title.strip().lower() == "" or title.strip().lower() == " ":
+        if not title.strip():
             print("You've provided incorrect movie title.")
         else:
             search_movie(title, movie_collection)
