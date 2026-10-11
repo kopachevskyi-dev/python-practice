@@ -28,57 +28,57 @@ def add_new_movie(movie_title, movie_director, movie_year):
 # Lists current collection
 def list_movie_collection(movie_collection):
     if len(movie_collection) != 0:
-        print("Your current movie collection: ")
+        print("Your current movie collection:")
 
         for movie in movie_collection:
-            print(movie)
+            print(f"- {movie['title']} ({movie['year']}), director: {movie['director']}")
     else:
-        print("Your current collection is empty :(")
+        print("Your current collection is empty.")
 
 # Search a movie from the collection based on it's title
 def search_movie(title, movie_collection):
     for movie in movie_collection:
         if title.strip().lower() == movie["title"].lower():
-            print("The movie you are looking for is: ")
-            print(movie)
+            print("The movie you are looking for is:")
+            print(f"- {movie['title']} ({movie['year']}), director: {movie['director']}")
             break
     else:
-        print("Can't find a movie with such title in your collection :(")
+        print("Can't find a movie with that title in your collection.")
 
 print(
 """
 WELCOME TO THE MOVIE COLLECTION APP
 
-1. Enter 'add' if you want to add a new movie to the collection
-2. Enter 'list' if you want to list you current movie collection
-3. Enter 'search' if you want to search for a specific movie from your collection
-4. Enter 'q' if you want to quit the app
-
+- Enter 'add' to add a new movie
+- Enter 'list' to show your collection
+- Enter 'search' to find a movie by title
+- Enter 'q' to quit
 """)
 
-while (True):
-    user_input = input("Your choice: ").strip().lower()
+while True:
+    user_input = input("\nYour choice (add / list / search / q): ").strip().lower()
 
     if user_input == "add":
-        movie_title = input("Please provide a movie title: ").strip()
-        movie_director = input("Please provide a name of the movie director: ").strip()
-        movie_year = input("Please provide a year when the movie was released: ").strip()
+        movie_title = input("Movie title: ").strip()
+        movie_director = input("Director: ").strip()
+        movie_year = input("Release year: ").strip()
 
         if not movie_title or not movie_director or not movie_year.isdigit():
-            print("You've provided incorrect movie data.")
+            print("Incorrect movie data. Title and director are required, and the year must be a whole number.")
         else:
             add_new_movie(movie_title, movie_director, int(movie_year))
+            print(f"Added: {movie_title} ({movie_year}), director: {movie_director}.")
     elif user_input == "list":
         list_movie_collection(movie_collection)
     elif user_input == "search":
-        title = input("Please provide a movie title: ")
+        title = input("Movie title: ").strip()
 
         if not title.strip():
-            print("You've provided incorrect movie title.")
+            print("Incorrect movie title. Enter a title to search for.")
         else:
             search_movie(title, movie_collection)
     elif user_input == "q":
         print("See ya later, bye!")
         break
     else:
-        print("Incorrect input, please try again")
+        print("Incorrect input. Enter 'add', 'list', 'search', or 'q'.")

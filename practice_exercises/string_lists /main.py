@@ -3,7 +3,7 @@ Ask the user for a string and print out whether this string is a palindrome or n
 (A palindrome is a string that reads the same forwards and backwards.)
 """
 
-user_input = input('Provide a string: ').lower()
+user_input = input('Enter a word or phrase: ').strip().lower()
 
 # First simpler solution
 """
@@ -23,6 +23,6 @@ for reversed_index in range(len(user_input) - 1, -1, -1):
 reversed_string = "".join(reversed_list)
 
 if reversed_string == user_input:
-    print(f"'{user_input}' is a palindrome string!")
+    print(f"'{user_input}' is a palindrome.")
 else:
-    print("Provided string is not a palindrome.")
+    print(f"'{user_input}' is not a palindrome.")

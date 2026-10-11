@@ -11,8 +11,8 @@ If check divides evenly into num, tell that to the user. If not, print a differe
 """
 
 # Input
-num = int(input('Provide a number: '))
-check = int(input('Provide a number to divide by: '))
+num = int(input('Enter the number to check: ').strip())
+check = int(input('Enter the number to divide by: ').strip())
 
 # MVP with first extra
 if num % 4 == 0:
@@ -24,6 +24,6 @@ else:
 
 # Second extra
 if num % check == 0:
-    print(f'{check} divides evenly into {num}')
+    print(f'{check} divides evenly into {num}.')
 else:
-    print(f'{check} doesn\'t divide evenly into {num}')
+    print(f'{check} does not divide evenly into {num}.')
