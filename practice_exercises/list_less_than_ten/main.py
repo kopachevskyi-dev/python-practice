@@ -19,9 +19,9 @@ for num in a:
         print(f"{num} is less than 5.")
 
 # First extra
-print(f"{[num for num in a if num < 5]}")
+print(f"Numbers less than 5: {[num for num in a if num < 5]}")
 
 # Second extra
-user_input = int(input('Provide a number: '))
+user_input = int(input('Enter a number. Keep list items smaller than this number: ').strip())
 
-print(f"List of numbers that are smaller: {[num for num in a if num < user_input ]}")
+print(f"Numbers smaller than {user_input}: {[num for num in a if num < user_input ]}")
